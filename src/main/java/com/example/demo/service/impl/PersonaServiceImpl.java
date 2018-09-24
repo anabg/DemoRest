@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.demo.model.Persona;
 import com.example.demo.service.IPersonaService;
 
+@Service
 public class PersonaServiceImpl implements IPersonaService {
 
 	@Override
