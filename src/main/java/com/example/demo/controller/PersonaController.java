@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Persona;
 import com.example.demo.service.IPersonaService;
+
 
 /**
  * PersonaController class
@@ -30,7 +32,7 @@ public class PersonaController {
 		return personaService.listar();
 	}
 	
-	@PostMapping(value="/registrar")
+	@PostMapping(value="/registrar", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public Persona registrar(@RequestBody Persona persona) {
 		return personaService.registrar(persona);
 	}

@@ -21,9 +21,12 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private int edad;
+		
 	
-	
-	
+	public Persona() {
+		super();
+	}
+
 	public Persona(int idPersona, String nombre, String apellido, int edad) {
 		super();
 		this.idPersona = idPersona;
