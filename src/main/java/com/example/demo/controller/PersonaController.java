@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Persona;
@@ -30,7 +31,7 @@ public class PersonaController {
 	}
 	
 	@PostMapping(value="/registrar")
-	public Persona registrar(Persona persona) {
+	public Persona registrar(@RequestBody Persona persona) {
 		return personaService.registrar(persona);
 	}
 	
