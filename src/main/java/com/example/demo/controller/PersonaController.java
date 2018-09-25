@@ -3,10 +3,15 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Persona;
+import com.example.demo.service.IPersonaService;
 
 /**
  * PersonaController class
@@ -16,13 +21,28 @@ import com.example.demo.model.Persona;
 @RestController
 public class PersonaController {
 	
-	@GetMapping(value="/saludar")
-	public List<Persona> saludar(){
-		List<Persona> lista = new ArrayList<>();
-
-		lista.add(new Persona(1, "aa", "bb", 2));
-		lista.add(new Persona(1, "aa", "cc", 2));
-		return lista;
+	@Autowired
+	private IPersonaService personaService;
+	
+	@GetMapping(value="/listar")
+	public List<Persona> listar(){
+		return personaService.listar();
 	}
+	
+	@PostMapping(value="/registrar")
+	public Persona registrar(Persona persona) {
+		return personaService.registrar(persona);
+	}
+	
+	@PutMapping(value="/modificar")
+	public Persona modificar(Persona persona) {
+		return personaService.modificar(persona);
+	}
+	
+	@DeleteMapping(value="/eliminar")
+	public int eliminar(int id) {
+		return personaService.eliminar(id);
+	}
+	
 
 }

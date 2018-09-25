@@ -2,40 +2,43 @@ package com.example.demo.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.IPersonaDAO;
 import com.example.demo.model.Persona;
 import com.example.demo.service.IPersonaService;
 
 @Service
 public class PersonaServiceImpl implements IPersonaService {
 
+	@Autowired
+	private IPersonaDAO personaDAO;
+
 	@Override
 	public Persona registrar(Persona pe) {
-		// TODO Auto-generated method stub
-		return null;
+		return personaDAO.save(pe);
 	}
 
 	@Override
 	public Persona modificar(Persona pe) {
-		// TODO Auto-generated method stub
-		return null;
+		return personaDAO.save(pe);
 	}
 
 	@Override
 	public int eliminar(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		personaDAO.delete(id);
+		return 1;
 	}
 
 	@Override
 	public List<Persona> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return personaDAO.findAll();
 	}
 
 	@Override
 	public Persona listarId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return personaDAO.findOne(id);
 	}
 
 }
